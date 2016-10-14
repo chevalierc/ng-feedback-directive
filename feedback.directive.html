@@ -1,0 +1,39 @@
+<div style="position: fixed;
+    z-index: 100;
+    left: 16px;
+    bottom: 16px;
+    width: 80%;
+    max-width: 500px;">
+
+    <div ng-if="show_dialog" style="border-radius: 2px;
+        border:1px solid rgba(0,0,0,.3);
+        box-shadow: 0 1px 3px rgba(0,0,0,.2);
+        background-color: #f9f9f9;
+        margin-bottom: 32px;
+        width: 100%;">
+
+        <div ng-if="message" style="border-radius: 2px 2px 0 0;
+            background-color: gainsboro;
+            padding: 16px;">
+            {{message}}
+        </div>
+
+        <div style="padding: 16px;">
+            <md-input-container style="width: 100%; margin: 0px;">
+                <label>Comment:</label>
+                <textarea rows='3' ng-model="response"></textarea>
+            </md-input-container>
+            <div layout="row" layout-align='end end'>
+                <md-button flex class="md-primary" ng-click="submit()">
+                    <span ng-if="loading == undefined">Submit Feedback</span>
+                    <span ng-if="loading">Sending</span>
+                    <span ng-if="loading == false">Sent, thankyou!</span>
+                </md-button>
+            </div>
+        </div>
+
+    </div>
+    <md-button class="md-fab" ng-click="toggle()">
+        <span ng-transclude></span>
+    </md-button>
+</div>
